@@ -85,3 +85,6 @@ mod_null <- glm(hsgrad ~ 1, data = graduation, family = "binomial")
 # P value:
 1 - pchisq(2*(ll.fit_1 - ll.null), df = (length(mod_1$coefficients)-1))
 1 - pchisq(2*(ll.fit_2 - ll.null), df = (length(mod_2$coefficients)-1))
+
+
+?glm

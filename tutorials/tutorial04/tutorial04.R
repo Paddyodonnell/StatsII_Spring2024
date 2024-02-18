@@ -39,7 +39,9 @@ mod_1 <- glm(hsgrad ~.,
 # Create a more parsimonious model of your own choice. Select three predictor 
 # variables, run the regression, and check with summary.
 
-mod_2 <- #your model
+mod_2 <- glm()
+  
+  #your model
 
 # 3. a) Create a new data frame comprising the outcome variable and two columns 
 #       of fitted values, one from mod_1 and another from mod_2. 
