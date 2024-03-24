@@ -88,8 +88,15 @@ library(AER)
 
 dispersiontest(mod.ps)
 
+mod2.ps <- glm(art ~ fem * ., data = long_data, family = quasipoisson)
+summary(mod2.ps)
+
 install.packages("pscl")
 library(pscl)
 
 mod.zip <- zeroinfl(art ~ ., data = long_data, dist = "poisson")
 summary(mod.zip)
+
+AIC (mod.ps, mod.zip)
+AIC (mod.ps, mod2.ps)
+
