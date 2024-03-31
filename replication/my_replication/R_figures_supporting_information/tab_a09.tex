@@ -1,0 +1,43 @@
+
+\begin{table}[!h]
+\caption{Predicting the ratio of broken to fulfilled promises by quarter and newspaper 
+       based on the deductively developed dictionary}
+\begin{center}
+\begin{footnotesize}
+\begin{tabular}{l c c}
+\hline
+ & M1: Full sample & M2: Logged DV \\
+\hline
+Newspaper: Tabloid                 & $0.79^{*}$   & $0.27^{**}$  \\
+                                   & $(0.33)$     & $(0.09)$     \\
+Canada                             & $-1.08^{*}$  & $-0.39^{*}$  \\
+                                   & $(0.53)$     & $(0.17)$     \\
+Ireland                            & $-0.80$      & $-0.19$      \\
+                                   & $(0.69)$     & $(0.22)$     \\
+United Kingdom                     & $-1.20^{*}$  & $-0.49^{**}$ \\
+                                   & $(0.48)$     & $(0.16)$     \\
+Lagged GDP change (log)            & $0.11$       & $0.04$       \\
+                                   & $(0.14)$     & $(0.04)$     \\
+Poll change to previous election   & $-0.02$      & $-0.01^{*}$  \\
+                                   & $(0.01)$     & $(0.00)$     \\
+Year                               & $0.05^{***}$ & $0.03^{***}$ \\
+                                   & $(0.01)$     & $(0.01)$     \\
+Gov. type: Single-party government & $0.44$       & $0.16$       \\
+                                   & $(0.37)$     & $(0.14)$     \\
+\hline
+AIC                                & $6720.21$    & $3238.11$    \\
+BIC                                & $6784.05$    & $3301.95$    \\
+Log likelihood                     & $-3348.10$   & $-1607.05$   \\
+N                                  & $1510$       & $1510$       \\
+N (Cycles)                         & $32$         & $32$         \\
+N (Newspapers)                     & $22$         & $22$         \\
+\hline
+\multicolumn{3}{l}{\tiny{\parbox{.7\linewidth}{\footnotesize \vspace{2pt}$^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$. \\
+       \textit{Note}: Model 1 uses the full sample of quarters with at least one sentence on broken and one sentence on
+       fulfilled promises.  Model 2 uses a logged dependent variable of the ratio. 
+       Models include random intercepts for each newspaper and cycle. Intercepts omitted from table. Standard errors in parentheses.}}}
+\end{tabular}
+\end{footnotesize}
+\label{tab:reg_brokenfulfilld_deductive}
+\end{center}
+\end{table}

@@ -1,0 +1,41 @@
+
+\begin{table}[!h]
+\caption{Predicting sentiment in sentences about political promises}
+\begin{center}
+\begin{footnotesize}
+\begin{tabular}{l c c}
+\hline
+ & M1: Inductive & M2: Deductive \\
+\hline
+(Intercept)                        & $-25.36^{***}$ & $-24.27^{***}$ \\
+                                   & $(2.48)$       & $(2.47)$       \\
+Class: Broken or Fulfilled         & $-0.62^{***}$  & $-0.56^{***}$  \\
+                                   & $(0.01)$       & $(0.01)$       \\
+Newspaper: Tabloid                 & $-0.04^{**}$   & $-0.04^{**}$   \\
+                                   & $(0.01)$       & $(0.01)$       \\
+Lagged GDP change (log)            & $-0.01^{*}$    & $-0.01^{**}$   \\
+                                   & $(0.00)$       & $(0.00)$       \\
+Poll change to previous election   & $0.00^{***}$   & $0.00^{***}$   \\
+                                   & $(0.00)$       & $(0.00)$       \\
+Year                               & $0.01^{***}$   & $0.01^{***}$   \\
+                                   & $(0.00)$       & $(0.00)$       \\
+Gov. type: Single-party government & $0.04$         & $0.04$         \\
+                                   & $(0.05)$       & $(0.05)$       \\
+\hline
+AIC                                & $1173226.45$   & $1174174.46$   \\
+BIC                                & $1173335.63$   & $1174283.63$   \\
+Log likelihood                     & $-586603.23$   & $-587077.23$   \\
+N                                  & $407696$       & $407123$       \\
+N (Cycles)                         & $32$           & $32$           \\
+N (Newspapers)                     & $22$           & $22$           \\
+\hline
+\multicolumn{3}{l}{\tiny{\parbox{.7\linewidth}{\footnotesize \vspace{2pt}$^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$. \\
+       \textit{Note}: Model 1 uses the inductive classification of fulfilled, broken, and ongoing promises, 
+                      Model 2 the deductive classification.  
+                      Both models include random intercepts for each cycle and newspaper. 
+                      Standard errors in parentheses.}}}
+\end{tabular}
+\end{footnotesize}
+\label{tab:reg_sentiment}
+\end{center}
+\end{table}

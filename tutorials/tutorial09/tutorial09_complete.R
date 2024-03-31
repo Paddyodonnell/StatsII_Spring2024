@@ -83,7 +83,7 @@ summary(mod2.ps)
 sqrt(mean((mod2.ps$model$art - mod2.ps$fitted.values)^2)) # RMSE
 
 # c) Over-dispersion?
-install.packages("AER")
+#install.packages("AER")
 library(AER)
 
 dispersiontest(mod.ps)
@@ -91,7 +91,7 @@ dispersiontest(mod.ps)
 mod2.ps <- glm(art ~ fem * ., data = long_data, family = quasipoisson)
 summary(mod2.ps)
 
-install.packages("pscl")
+#install.packages("pscl")
 library(pscl)
 
 mod.zip <- zeroinfl(art ~ ., data = long_data, dist = "poisson")

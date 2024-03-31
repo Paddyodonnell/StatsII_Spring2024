@@ -1,0 +1,110 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{graphicx,textcomp}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage[reqno]{amsmath}
+\usepackage{amsthm}
+\usepackage{fancyvrb}
+\usepackage{amssymb,enumerate}
+\usepackage[all]{xy}
+\usepackage{endnotes}
+\usepackage{lscape}
+\newtheorem{com}{Comment}
+\usepackage{float}
+\usepackage{hyperref}
+\newtheorem{lem} {Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{cor}{Corollary}
+\newtheorem{obs}{Observation}
+\usepackage[compact]{titlesec}
+\usepackage{dcolumn}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{multirow}
+\usepackage{xcolor}
+\newcolumntype{.}{D{.}{.}{-1}}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+\definecolor{light-gray}{gray}{0.65}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{longtable}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+\lstset{style=mystyle}
+\newcommand{\Sref}[1]{Section~\ref{#1}}
+\newtheorem{hyp}{Hypothesis}
+
+\title{Problem Set 2}
+\date{Due: February 18, 2024}
+\author{Applied Stats II}
+
+
+\begin{document}
+	
+\begin{table}[!h]
+\caption{Predicting the number of articles on promises published throughout the electoral cycle}
+\begin{center}
+\begin{scriptsize}
+\begin{tabular}{l c c c c c c}
+\hline
+ & M1: Ongoing (single) & M2: Broken (single) & M3: Fulfilled (single) & M4: Ongoing (multi) & M5: Broken (multi) & M6: Fulfilled (multi) \\
+\hline
+(Intercept)                        & $0.01$        & $-3.81^{***}$ & $-4.97^{***}$ & $1.27^{***}$  & $-2.02^{***}$ & $-3.21^{***}$ \\
+                                   & $(0.05)$      & $(0.22)$      & $(0.39)$      & $(0.04)$      & $(0.12)$      & $(0.21)$      \\
+Number of articles per class (lag) & $0.02^{***}$  & $0.26^{***}$  & $0.40^{***}$  & $0.02^{***}$  & $0.31^{***}$  & $0.26^{**}$   \\
+                                   & $(0.00)$      & $(0.02)$      & $(0.04)$      & $(0.00)$      & $(0.02)$      & $(0.09)$      \\
+Electoral cycle                    & $21.27^{***}$ & $39.03^{***}$ & $20.90^{***}$ & $15.63^{***}$ & $5.12$        & $15.66^{*}$   \\
+                                   & $(1.26)$      & $(4.39)$      & $(6.21)$      & $(1.34)$      & $(4.81)$      & $(7.52)$      \\
+Electoral cycle$^2$                & $20.94^{***}$ & $19.30^{***}$ & $24.60^{***}$ & $19.87^{***}$ & $26.53^{***}$ & $30.49^{***}$ \\
+                                   & $(1.16)$      & $(3.96)$      & $(5.46)$      & $(1.18)$      & $(4.12)$      & $(6.41)$      \\
+Electoral cycle$^3$                & $12.11^{***}$ & $22.12^{***}$ & $25.32^{***}$ & $8.37^{***}$  & $29.24^{***}$ & $28.29^{***}$ \\
+                                   & $(1.09)$      & $(3.77)$      & $(5.15)$      & $(1.14)$      & $(4.01)$      & $(6.11)$      \\
+Lagged GDP change (log)            & $-0.01$       & $-0.07$       & $-0.17^{*}$   & $-0.04^{*}$   & $0.16^{*}$    & $-0.04$       \\
+                                   & $(0.01)$      & $(0.06)$      & $(0.08)$      & $(0.02)$      & $(0.07)$      & $(0.11)$      \\
+Poll change to previous election   & $-0.01^{***}$ & $-0.02^{**}$  & $-0.02^{**}$  & $0.00$        & $0.01$        & $0.03$        \\
+                                   & $(0.00)$      & $(0.01)$      & $(0.01)$      & $(0.00)$      & $(0.01)$      & $(0.02)$      \\
+\hline
+AIC                                & $152287.14$   & $21974.82$    & $11446.54$    & $79719.46$    & $10653.84$    & $4809.22$     \\
+BIC                                & $152525.76$   & $22213.44$    & $11685.17$    & $79857.28$    & $10791.65$    & $4947.03$     \\
+Log likelihood                     & $-76114.57$   & $-10958.41$   & $-5694.27$    & $-39841.73$   & $-5308.92$    & $-2386.61$    \\
+Deviance                           & $32264.33$    & $8257.00$     & $4928.86$     & $17983.52$    & $4178.00$     & $2094.91$     \\
+N                                  & $27678$       & $27678$       & $27678$       & $15620$       & $15620$       & $15620$       \\
+\hline
+\multicolumn{7}{l}{\tiny{\parbox{.9\linewidth}{\footnotesize \vspace{2pt}$^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$. \\
+       \textit{Note}: Models 1--3  limit the sample to single-party cabinets, Model 4--6 focus only on multiparty cabinets.  
+         All models include dummy variables for each country-cycle observation which are omitted from the table.
+                      Standard errors in parentheses.}}}
+\end{tabular}
+\end{scriptsize}
+\label{tab:reg_cycle}
+\end{center}
+\end{table}
+
+\end{document}
