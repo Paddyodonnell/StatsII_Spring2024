@@ -1,0 +1,174 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{graphicx,textcomp}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage[reqno]{amsmath}
+\usepackage{amsthm}
+\usepackage{fancyvrb}
+\usepackage{amssymb,enumerate}
+\usepackage[all]{xy}
+\usepackage{endnotes}
+\usepackage{lscape}
+\newtheorem{com}{Comment}
+\usepackage{float}
+\usepackage{hyperref}
+\newtheorem{lem} {Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{cor}{Corollary}
+\newtheorem{obs}{Observation}
+\usepackage[compact]{titlesec}
+\usepackage{dcolumn}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{multirow}
+\usepackage{xcolor}
+\newcolumntype{.}{D{.}{.}{-1}}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+\definecolor{light-gray}{gray}{0.65}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{booktabs}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+\lstset{style=mystyle}
+\newcommand{\Sref}[1]{Section~\ref{#1}}
+\newtheorem{hyp}{Hypothesis}
+
+\title{Problem Set 4}
+\date{Due: April 12, 2024}
+\author{Applied Stats II}
+
+
+\begin{document}
+	\maketitle
+	\section*{Instructions}
+	\begin{itemize}
+	\item Please show your work! You may lose points by simply writing in the answer. If the problem requires you to execute commands in \texttt{R}, please include the code you used to get your answers. Please also include the \texttt{.R} file that contains your code. If you are not sure if work needs to be shown for a particular problem, please ask.
+	\item Your homework should be submitted electronically on GitHub in \texttt{.pdf} form.
+	\item This problem set is due before 23:59 on Friday April 12, 2024. No late assignments will be accepted.
+
+	\end{itemize}
+
+	\vspace{.25cm}
+\section*{Question 1}
+\vspace{.25cm}
+\noindent We're interested in modeling the historical causes of child mortality. We have data from 26855 children born in Skellefteå, Sweden from 1850 to 1884. Using the "child" dataset in the \texttt{eha} library, fit a Cox Proportional Hazard model using mother's age and infant's gender as covariates. Present and interpret the output.
+
+\section*{Answer:}
+
+The following code was used to load the data and produce the model:
+
+\begin{lstlisting}[language = R]
+	# Load data.
+	data(package = "eha")
+	data("child")
+	
+	# Fit Cox Proportional Hazard model
+	add_surv <- coxph(Surv(enter, exit, event) ~ m.age + sex,
+	data = child)
+\end{lstlisting}
+
+
+
+\begin{table}[!htbp] \centering 
+	\caption{Table of Additive Cox Proportional Hazard Model with Hazard Ratios:} 
+	\label{} 
+	\begin{tabular}{@{\extracolsep{5pt}}lc} 
+		\\[-1.8ex]\hline 
+		\hline \\[-1.8ex] 
+		& \multicolumn{1}{c}{\textit{Dependent variable:}} \\ 
+		\cline{2-2} 
+		\\[-1.8ex] & enter \\ 
+		\hline \\[-1.8ex] 
+		m.age &  0.007617$^{***}$ \\ 
+		& (0.002128) \\ 
+		exp(m.age) & 1.007646$^{***}$ \\ 
+		& \\ 
+		sexfemale & $-$0.082215$^{***}$ \\ 
+		& (0.026743) \\ 
+		exp(sexfemale) & 0.921074$^{***}$ \\ 
+		& \\ 
+		\hline \\[-1.8ex] 
+		Observations & 26,574 \\ 
+		R$^{2}$ & 0.001 \\ 
+		Max. Possible R$^{2}$ & 0.986 \\ 
+		Log Likelihood & $-$56,503.480 \\ 
+		Wald Test & 22.520$^{***}$ (df = 2) \\ 
+		LR Test & 22.518$^{***}$ (df = 2) \\ 
+		Score (Logrank) Test & 22.530$^{***}$ (df = 2) \\ 
+		\hline 
+		\hline \\[-1.8ex] 
+		\textit{Note:}  & \multicolumn{1}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+	\end{tabular} 
+\end{table}
+
+\subsection*{Interpretation of Coefficients:}
+
+\textbf{m.age:} The estimated coefficient for mother's age is 0.007617, with an exponentiated coefficient (hazard ratio) of 1.007646. This means that with each additional year of age, the hazard (risk of the event occurring) increases by approximately 0.76\%. The p-value (0.000344) suggests that this effect is statistically significant at $\alpha$ = 0.05. The older the mother the greater the probability of the child dying.
+
+\vspace{1cm}
+
+\textbf{sex:} The estimated coefficient for sexfemale is -0.082215, with a hazard ratio of 0.921074. This indicates that the hazard for females is approximately 7.9\% lower compared to males (because reference group male is coded as 0). So a one unit increase in sex is equal to changing sex from male to female. The p-value (0.0021) shows that this is statistically significant at $\alpha$ = 0.05. Male children have a higher probability of dying then female children.
+
+\vspace{2cm}
+
+\subsection*{Assessing Model Quality:}
+
+The following code was used to test the quality of the model fit.
+
+\begin{lstlisting}[language = R]
+	assessment <- drop1(add_surv, test = "Chisq")
+\end{lstlisting}
+
+Below are the results of the drop1 assessment.
+
+\begin{table}[ht]
+	\centering
+	\caption{Model Assessment for Cox Proportional Hazards Model}
+	\label{tab:model_assessment}
+	\begin{tabular}{lcccc}
+		\toprule
+		Term & Df & AIC & LRT & Pr(>Chi) \\ 
+		\midrule
+		\textit{$<$none$>$} &  & 113011 &  &  \\
+		m.age & 1 & 113022 & 12.7946 & 0.0003476 *** \\
+		sex & 1 & 113018 & 9.4646 & 0.0020947 ** \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+The low p-values ($<$ $\alpha$ = 0.05) suggest that dropping either of the predictors would result in a worse model fit. The likelihood ratio test results also suggest that both the predictors are significant and result in a better model fit than a model without them.
+
+Also, fitting a model with an interaction effect in R resulted in a worse model with lower p-values, the interaction effect was shown to be statistically insignificant, indicating that the additive model is better.
+
+
+\end{document}
+
+
