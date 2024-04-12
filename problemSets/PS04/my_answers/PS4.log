@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.22)  12 APR 2024 21:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.22)  12 APR 2024 21:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -977,10 +977,10 @@ Package rerunfilecheck Info: File `PS4.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 27231 strings out of 474424
- 478556 string characters out of 5741739
+ 27234 strings out of 474424
+ 478624 string characters out of 5741739
  1993496 words of memory out of 5000000
- 49083 multiletter control sequences out of 15000+600000
+ 49085 multiletter control sequences out of 15000+600000
  569469 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,10n,93p,3237b,2075s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1000,9 +1000,9 @@ sy10.pfb><C:/Users/paddy/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
 nts/cm/cmsy8.pfb><C:/Users/paddy/AppData/Local/Programs/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmti12.pfb><C:/Users/paddy/AppData/Local/Programs/MiKTeX/fonts/t
 ype1/public/amsfonts/cm/cmtt12.pfb>
-Output written on PS4.pdf (3 pages, 144261 bytes).
+Output written on PS4.pdf (3 pages, 145201 bytes).
 PDF statistics:
- 107 PDF objects out of 1000 (max. 8388607)
- 16 named destinations out of 1000 (max. 500000)
+ 108 PDF objects out of 1000 (max. 8388607)
+ 17 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
